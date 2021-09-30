@@ -5,7 +5,7 @@ import { Provider, useSelector } from 'react-redux'
 import { store } from './store/store'
 import { STATUS } from "./store/user/userReducer"
 
-export default App =() => {
+export default function App() {
   return (
     <Provider store={store}>
       <NativeBaseProvider>
