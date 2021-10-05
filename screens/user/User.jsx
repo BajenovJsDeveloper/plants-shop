@@ -23,17 +23,15 @@ export function User({ navigation }) {
 
   return (
     <MainLayout bgImage={PlantIMG}>
-        <VStack>
           <Heading fontSize="2xl" color="info.500" textAlign="center" pb={2}>
             Hi, {userName}
           </Heading>
-          <VStack>
+          <VStack p={4}>
             {
               mocData.map(plant => <Card key={plant.id} data={plant} linkClick={linkClick}/>)
             }
           </VStack>
-        </VStack>
-        <SubmitButton my={4} title="Log Out" iconName="logout" submit={onSubmit} />
+        <SubmitButton mx={4} my={4} title="Log Out" iconName="logout" submit={onSubmit} />
     </MainLayout>
   )
 }

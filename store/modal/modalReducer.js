@@ -7,7 +7,7 @@ export const modalReducer = createSlice({
     result: null,
     data: {
       title: 'Modal',
-      about: 'Something about...',
+      about: ['Something about...'],
       type: null
     }  
   },

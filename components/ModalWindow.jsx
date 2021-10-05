@@ -1,4 +1,4 @@
-import { Box, Button, Center, Heading, Modal } from 'native-base'
+import { Box, Button, Center, Heading, Modal, Text } from 'native-base'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideModal } from '../store/modal/modalReducer'
@@ -26,23 +26,26 @@ export const ModalWindow = ({ submit, cancel }) => {
                 <MaterialIcons name="done" size={40} color="green" />
               </Box>
             </Center>
-            {about}
+            {about.map(text => <Text>{text}</Text>)}
           </Modal.Body>
           <Modal.Footer>
-            <Button.Group variant="outline" space={2}>
+            <Button.Group variant="unstyled" space={2}>
             <Button
               borderRadius={50}
               onPress={() =>closeHandle(false)}
               colorScheme="secondary"
               _pressed={{ opacity: 0.3 }}
+              bg="teal.50"
+              px={6}
             >
               Cancel
             </Button>
             <Button
               borderRadius={50}
               onPress={() =>closeHandle(true)}
-              colorScheme="primary"
+              bg="teal.500"
               _pressed={{ opacity: 0.3 }}
+              px={6}
             >
               Submit
             </Button>

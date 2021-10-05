@@ -9,6 +9,7 @@ import { User } from './user/User'
 import { useSelector } from 'react-redux'
 import ReadMore from './read-more/ReadMore'
 import { MyCart } from '../components/MyCart';
+import { Cart } from './cart/cart';
 
 const NavigationStack = createNativeStackNavigator()
 
@@ -78,17 +79,24 @@ const privateRoutes = [
   {
     name: "User", 
     component: User,
-    options: () => ({ 
-      headerTitle: props => <HeaderBar title="User" {...props} />,
-      headerRight: props => <MyCart {...props}/>
+    options: (props) => ({ 
+      headerTitle: () => <HeaderBar title="User" {...props} />,
+      headerRight: () => <MyCart {...props}/>
     })
   },
   {
     name: "ReadMore", 
     component: ReadMore,
-    options: () => ({ 
-      headerTitle: props => <HeaderBar title="More" {...props} />,
-      headerRight: props => <MyCart {...props}/>
+    options: (props) => ({ 
+      headerTitle: () => <HeaderBar title="More" {...props}/>,
+      headerRight: () => <MyCart {...props}/>
+    })
+  },
+  {
+    name: "Cart", 
+    component: Cart,
+    options: (props) => ({ 
+      headerTitle: () => <HeaderBar title="My Cart" {...props} />,
     })
   },
 ]

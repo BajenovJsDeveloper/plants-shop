@@ -67,7 +67,16 @@ export const userReducer = createSlice({
       state.errMessage = null
     },
     addToCart: (state, action) => {
+      const lastItem = state.myCart.find(item => item.item.id === action.payload.item.id)
+      if (lastItem) {
+        lastItem.count += action.payload.count
+        return
+      }
       state.myCart.push(action.payload)
+    },
+    removeFromCart: (state, action) => {
+      state.myCart = state.myCart.filter(item => item.item.id !== action.payload.item.id)
+      console.log("Cart:", state.myCart)
     }
   },
   extraReducers: builder => {
@@ -100,5 +109,5 @@ export const userReducer = createSlice({
   }
 })
 
-export const { login, logout, resetToast, addToCart } = userReducer.actions
+export const { login, logout, resetToast, addToCart, removeFromCart } = userReducer.actions
 export default userReducer.reducer

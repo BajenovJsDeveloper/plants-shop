@@ -7,14 +7,14 @@ import { STATUS } from "./store/user/userReducer"
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <NativeBaseProvider>
-        <VStack flex={1} position="relative">
-          <Loader/>
-          <Navigation />
-        </VStack>
-      </NativeBaseProvider>
-    </Provider>
+      <Provider store={store}>
+        <NativeBaseProvider>
+          <VStack flex={1} position="relative">
+            <Loader/>
+            <Navigation />
+          </VStack>
+        </NativeBaseProvider>
+      </Provider>
   )
 }
 

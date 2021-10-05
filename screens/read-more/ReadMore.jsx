@@ -1,46 +1,82 @@
-import { Box, Button, Center, Divider, Heading, Image, Text } from 'native-base'
-import React from 'react'
+import { Box, Button, Center, Divider, Heading, HStack, Image, Text } from 'native-base'
+import React, { useMemo, useState } from 'react'
 import { MainLayout } from '../../components/MainLayout'
 import { MaterialIcons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/user/userReducer';
 import { showModal } from '../../store/modal/modalReducer';
 
-export default function ReadMore({ route }) {
+export default function ReadMore({ route, navigation }) {
   const item = route.params
-  const { img, title, description, price } = item
+  const { img, title, description, price, quantity } = item
+  const [count, setCount] = useState(1)
   const dispatch = useDispatch()
 
   const submit = () => {
-    dispatch(addToCart(item))
+    dispatch(addToCart({ item, count }))
+    setCount(1)
   }
 
   const handlePress = () => {
-    const about = `Your choise is: ${title}, price: \$${price}`
+    const about = [
+      `Your choise is: ${title},`,
+      `Price: \$${price},`,
+      `Total: \$${133}`
+    ]
     dispatch(showModal({ title: 'New product', about }))
   }
 
+  const incraseHandle = () => {
+    setCount(prev => prev + 1)
+  }
+
+  const decraseHandle = () => {
+    setCount(prev => prev - 1)
+  }
+
+  const isMore = useMemo(() => {
+    return quantity <= count
+  }, [count])
+  const isLess = useMemo(() => {
+    return count === 1
+  }, [count])
+
   return (
     <MainLayout submit={submit}>
-      <Center>
+      <Center p={4}>
         <Box bg="white" p={4} w="100%" borderRadius={8}>
           <Center py={2}>
             <Image source={img} alt="Alternate Text" size="2xl"/>
           </Center>
           <Divider my={2} orientation="horizontal" bg="#c9c9c9c0" w="100%"/>
-          <Heading>{title}</Heading>
-          <Center>
+          <Heading textAlign="center">{title}</Heading>
+          <Center my={2}>
             <MaterialIcons name="info-outline" size={32} color="pink" />
           </Center>
           {description.map((text, idx) => (<Text key={`plant-${idx}`} fontStyle="italic">{idx +1}. {text}</Text>))}
-          <Text pt={8} fontWeight="bold" fontSize="lg">Price:
+          <Text mt={6} fontWeight="bold">Quantity: {quantity}</Text>
+          <HStack pt={2}>
+            <Center mr={4}>
+              <Text fontWeight="bold">Total:</Text>
+            </Center>
+            <Button isDisabled={isMore} variant="unstyled" _pressed={{ opacity: 0.3 }} p={1} onPress={incraseHandle}>
+              <MaterialIcons name="add-circle-outline" size={36} color="#1d916ad3" />
+            </Button>
+            <Center>
+              <Text textAlign="center" fontSize={26} mx={4} w={8}>{count}</Text>
+            </Center>
+            <Button isDisabled={isLess}  variant="unstyled" _pressed={{ opacity: 0.3 }} p={1} onPress={decraseHandle}>
+              <MaterialIcons name="remove-circle-outline" size={36} color="#1d916ad3" />
+            </Button>
+          </HStack>
+          <Text pt={4} fontWeight="bold" fontSize="lg">Price:
             <Text fontSize="xl" color="teal.500"> ${price}</Text>
           </Text>
           <Button 
             borderRadius={50} 
             mt={8} 
             p={3} 
-            bg="emerald.600" 
+            bg="teal.600" 
             _pressed={{ opacity: 0.3 }}
             onPress={handlePress}
           >GET it NOW</Button>

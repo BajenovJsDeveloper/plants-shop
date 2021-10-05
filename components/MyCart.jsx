@@ -1,13 +1,17 @@
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
-import { Box, Button, Center, HStack, Text } from 'native-base';
+import { Box, Button, Center, Text } from 'native-base';
 import { useSelector } from 'react-redux';
 
 
-export const MyCart = () => {
+export const MyCart = ({ navigation }) => {
   const myCart = useSelector(state => state.user.myCart.length)
+
+  const handleClick = () => {
+    navigation.navigate('Cart')
+  }
   return (
-    <Button p={0} borderRadius={50} _pressed={{ opacity: 0.3 }} variant="unstyled">
+    <Button p={0} borderRadius={50} _pressed={{ opacity: 0.3 }} variant="unstyled" onPress={handleClick}>
       <Box borderColor="black" position="relative" w={20} bottom={1}>
         <Center>
             <Center bg="teal.500" p={1.5} borderRadius={50} >

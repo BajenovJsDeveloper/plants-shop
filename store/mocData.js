@@ -15,8 +15,9 @@ export const mocData = [
       quasi. Quis tempora recusandae unde maxime id sapiente cupiditate. Debitis 
       exercitationem ut pariatur maxime eos! Hic quia ad obcaecati accusamus minus?`
     ],
+    short: 'Quis tempora recusandae unde maxime id sapiente cupiditate.',
     price: 109.99,
-    qantity: 10
+    quantity: 10
   },
   {
     id: '123457',
@@ -30,8 +31,9 @@ export const mocData = [
       quasi. Quis tempora recusandae unde maxime id sapiente cupiditate. Debitis 
       exercitationem ut pariatur maxime eos! Hic quia ad obcaecati accusamus minus?`
     ],
+    short: 'Hic quia ad obcaecati accusamus minus?',
     price: 133.99,
-    qantity: 8
+    quantity: 8
   },
   {
     id: '123458',
@@ -45,7 +47,24 @@ export const mocData = [
       quasi. Quis tempora recusandae unde maxime id sapiente cupiditate. Debitis 
       exercitationem ut pariatur maxime eos! Hic quia ad obcaecati accusamus minus?`
     ],
+    short: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit',
     price: 229.99,
-    qantity: 12
+    quantity: 12
+  },
+  {
+    id: '123459',
+    title: "Flower4",
+    img: plant3,
+    description: [
+      `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, 
+      quasi. Quis tempora recusandae unde maxime id sapiente cupiditate. Debitis 
+      exercitationem ut pariatur maxime eos! Hic quia ad obcaecati accusamus minus?`,
+      `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, 
+      quasi. Quis tempora recusandae unde maxime id sapiente cupiditate. Debitis 
+      exercitationem ut pariatur maxime eos! Hic quia ad obcaecati accusamus minus?`
+    ],
+    short: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit',
+    price: 78.99,
+    quantity: 6
   },
 ]

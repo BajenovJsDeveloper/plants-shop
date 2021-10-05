@@ -1,14 +1,14 @@
 import React from "react"
-import { Button, Center, Divider, HStack, Image, Text } from "native-base"
+import { Box, Button, Center, Divider, HStack, Image, Text } from "native-base"
 import { EvilIcons } from '@expo/vector-icons';
 
 
 export const Card = ({ data, linkClick }) => {
   const { title, img } = data
-  const text = data.description.length > 0 ? data.description[0] : 'No description yet.'
+  const text = data.short? data.short : 'No description yet.'
 
   return (
-    <Button mb={4} p={2} bg="info.50" borderRadius={8} w={{ base: "100%"}} _pressed={{ opacity: 0.5, backgroundColor: "gray.400" }}>
+    <Box mb={4} p={2} bg="white" borderRadius={8} w={{ base: "100%"}}>
       <Center py={2}>
         <Image source={img} alt="Alternate Text" size="2xl"/>
       </Center>
@@ -23,6 +23,6 @@ export const Card = ({ data, linkClick }) => {
           <EvilIcons name="arrow-right" size={32} color="#46cdf7"/>
         </HStack>
       </Button>
-    </Button>
+    </Box>
   )
 }

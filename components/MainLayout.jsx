@@ -1,4 +1,4 @@
-import { Box, Center, Image, ScrollView } from 'native-base'
+import { Box, Center, Image, ScrollView, VStack } from 'native-base'
 import React from 'react'
 import PlantBG from '../images/plant3.jpg'
 import { ModalWindow } from './ModalWindow'
@@ -15,8 +15,13 @@ export function MainLayout({ children, bgImage = PlantBG, submit, cancel }) {
         </Box>
       }
       <ModalWindow submit={submit} cancel={cancel}/>
-      <ScrollView _contentContainerStyle={{ p: 8 }} w={{ base: "100%" }}>
-       {children} 
+      <ScrollView
+        w={{ base: "100%" }}
+        flex={1}
+      >
+        <VStack p={4} flex={1} w={{ base: "100%" }}>
+        {children} 
+        </VStack>
       </ScrollView>
     </Center>
   )

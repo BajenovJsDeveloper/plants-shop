@@ -9,7 +9,7 @@ export  const SubmitButton = ({ title, submit, iconName, ...props }) => {
       {...props}
       onPress={submit}
       rounded={50}
-      bg="emerald.600"
+      bg="teal.600"
       mt={4}
       _pressed={{ opacity: 0.5 }}
       p={3}
