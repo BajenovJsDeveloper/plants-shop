@@ -17,10 +17,10 @@ export const Card = ({ data, linkClick }) => {
         <Text fontSize="lg" color="black">{title}</Text>
         <Text fontSize="sm" color="gray.600">{text}</Text>
       </Center >
-      <Button variant="link" p={2} onPress={() =>linkClick(data)} _pressed={{ opacity: 0.5 }}>
+      <Button variant="outline" p={2} rounded="3xl" onPress={() =>linkClick(data)} _pressed={{ opacity: 0.5 }}>
         <HStack>
-          <Text color="info.400"> Read more </Text>
-          <EvilIcons name="arrow-right" size={32} color="#46cdf7"/>
+          <Text color="teal.700"> Read more </Text>
+          <EvilIcons name="arrow-right" size={32} color="#1f805f"/>
         </HStack>
       </Button>
     </Box>

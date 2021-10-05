@@ -5,6 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/user/userReducer';
 import { showModal } from '../../store/modal/modalReducer';
+import { countTotalPrice } from '../../utils/api';
 
 export default function ReadMore({ route, navigation }) {
   const item = route.params
@@ -20,10 +21,10 @@ export default function ReadMore({ route, navigation }) {
   const handlePress = () => {
     const about = [
       `Your choise is: ${title},`,
-      `Price: \$${price},`,
-      `Total: \$${133}`
+      `Price: \$ ${price},`,
+      `Total: \$ ${countTotalPrice(price, count)}`
     ]
-    dispatch(showModal({ title: 'New product', about }))
+    dispatch(showModal({ title: 'Add to cart', about }))
   }
 
   const incraseHandle = () => {
