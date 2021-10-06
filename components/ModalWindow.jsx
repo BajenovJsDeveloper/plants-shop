@@ -26,7 +26,7 @@ export const ModalWindow = ({ submit, cancel }) => {
                 <MaterialIcons name="done" size={40} color="green" />
               </Box>
             </Center>
-            {about.map(text => <Text>{text}</Text>)}
+            {about.map(text => <Text key={text}>{text}</Text>)}
           </Modal.Body>
           <Modal.Footer>
             <Button.Group variant="unstyled" space={2}>

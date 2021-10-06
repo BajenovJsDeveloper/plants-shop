@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 const BaseUrl = 'http://192.168.100.50:3300'
+const HEADERS = { "Content-Type": "application/json" }
 
 export const STATUS = {
   loading: "loading",
@@ -12,15 +13,18 @@ const delayFetch = () => new Promise((resolve) => {
   setTimeout(() => resolve(), 1000)
 })
 
-export const fetchLogin = createAsyncThunk('user/login', async (data) => {
-  const config = {
-    url: BaseUrl + '/login',
-    method: "POST",
+const createConfig = (method = 'GET', path = '', data ) => {
+  return {
+    url: BaseUrl + path,
+    method,
     data,
-    headers: {
-      "Content-Type": "application/json"
-    }
+    headers: HEADERS
   }
+}
+
+export const fetchLogin = createAsyncThunk('user/login', async (data) => {
+  const config = createConfig('POST', '/login', data)
+  
   await delayFetch()
   const response = await axios(config)
   return  {
@@ -30,14 +34,8 @@ export const fetchLogin = createAsyncThunk('user/login', async (data) => {
 })
 
 export const fetchRegister = createAsyncThunk('user/register', async (data) => {
-  const config = {
-    url: BaseUrl + '/signin',
-    method: "POST",
-    data,
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }
+  const config = createConfig('POST', '/signin', data)
+
   await delayFetch()
   const response = await axios(config)
   return  {
