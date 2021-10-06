@@ -15,7 +15,6 @@
     "expo": "~42.0.1",
     "expo-blur": "~9.0.3",
     "expo-status-bar": "~1.0.4",
-    "mobx": "^6.3.3",
     "mobx-react-lite": "^3.2.1",
     "native-base": "3.2.0",
     "numbro": "^2.3.5",
