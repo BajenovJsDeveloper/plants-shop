@@ -75,7 +75,6 @@ export const userReducer = createSlice({
     },
     removeFromCart: (state, action) => {
       state.myCart = state.myCart.filter((item) => item.item.id !== action.payload.item.id)
-      console.log('Cart:', state.myCart)
     },
   },
   extraReducers: (builder) => {
@@ -83,11 +82,9 @@ export const userReducer = createSlice({
       .addCase(fetchLogin.fulfilled, (state, action) => {
         state.token = action.payload.token
         state.username = action.payload.username
-        console.log('GOOD!', action.payload)
         state.status = STATUS.ready
       })
       .addCase(fetchLogin.rejected, (state, action) => {
-        console.log('Error ready', action.error.message)
         state.status = STATUS.ready
         state.errMessage = 'Error User login!'
       })

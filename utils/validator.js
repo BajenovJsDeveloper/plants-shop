@@ -17,13 +17,13 @@ export const validate = (form, rules) => {
 }
 
 export const loginRules = [
-  { name: 'email', pattern: EMAIL_REGX, required: true, message: 'Email failed' },
-  { name: 'password', pattern: PASS_REGX, required: true, message: 'Field failed' },
+  { name: 'email', pattern: EMAIL_REGX, required: true, message: 'Email not valid' },
+  { name: 'password', pattern: PASS_REGX, required: true, message: 'Password not valid' },
 ]
 
 export const registerRuls = [
-  { name: 'name', pattern: NAME_REGX, required: true, message: 'User name failed' },
-  { name: 'email', pattern: EMAIL_REGX, required: true, message: 'User email falied' },
-  { name: 'password', pattern: PASS_REGX, required: true, message: 'User password failed' },
-  { name: 'repassword', pattern: PASS_REGX, required: true, message: 'User repeat password failed' },
+  { name: 'name', pattern: NAME_REGX, required: true, message: 'User name not valid' },
+  { name: 'email', pattern: EMAIL_REGX, required: true, message: 'User email not valid' },
+  { name: 'password', pattern: PASS_REGX, required: true, message: 'User password not valid' },
+  { name: 'repassword', pattern: PASS_REGX, required: true, message: 'User repeat password not valid' },
 ]
