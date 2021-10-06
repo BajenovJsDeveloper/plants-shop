@@ -1,11 +1,11 @@
 import { Box, Button, Center, Divider, Heading, HStack, Image, Text } from 'native-base'
 import React, { useMemo, useState } from 'react'
 import { MainLayout } from '../../components/MainLayout'
-import { MaterialIcons } from '@expo/vector-icons';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../store/user/userReducer';
-import { showModal } from '../../store/modal/modalReducer';
-import { countTotalPrice } from '../../utils/api';
+import { MaterialIcons } from '@expo/vector-icons'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../store/user/userReducer'
+import { showModal } from '../../store/modal/modalReducer'
+import { countTotalPrice } from '../../utils/api'
 
 export default function ReadMore({ route, navigation }) {
   const item = route.params
@@ -19,20 +19,16 @@ export default function ReadMore({ route, navigation }) {
   }
 
   const handlePress = () => {
-    const about = [
-      `Your choise is: ${title},`,
-      `Price: \$ ${price},`,
-      `Total: \$ ${countTotalPrice(price, count)}`
-    ]
+    const about = [`Your choise is: ${title},`, `Price: \$ ${price},`, `Total: \$ ${countTotalPrice(price, count)}`]
     dispatch(showModal({ title: 'Add to cart', about }))
   }
 
   const incraseHandle = () => {
-    setCount(prev => prev + 1)
+    setCount((prev) => prev + 1)
   }
 
   const decraseHandle = () => {
-    setCount(prev => prev - 1)
+    setCount((prev) => prev - 1)
   }
 
   const isMore = useMemo(() => {
@@ -47,15 +43,21 @@ export default function ReadMore({ route, navigation }) {
       <Center p={4}>
         <Box bg="white" p={4} w="100%" borderRadius={8}>
           <Center py={2}>
-            <Image source={img} alt="Alternate Text" size="2xl"/>
+            <Image source={img} alt="Alternate Text" size="2xl" />
           </Center>
-          <Divider my={2} orientation="horizontal" bg="#c9c9c9c0" w="100%"/>
+          <Divider my={2} orientation="horizontal" bg="#c9c9c9c0" w="100%" />
           <Heading textAlign="center">{title}</Heading>
           <Center my={2}>
             <MaterialIcons name="info-outline" size={32} color="pink" />
           </Center>
-          {description.map((text, idx) => (<Text key={`plant-${idx}`} fontStyle="italic">{idx +1}. {text}</Text>))}
-          <Text mt={6} fontWeight="bold">Quantity: {quantity}</Text>
+          {description.map((text, idx) => (
+            <Text key={`plant-${idx}`} fontStyle="italic">
+              {idx + 1}. {text}
+            </Text>
+          ))}
+          <Text mt={6} fontWeight="bold">
+            Quantity: {quantity}
+          </Text>
           <HStack pt={2}>
             <Center mr={4}>
               <Text fontWeight="bold">Total:</Text>
@@ -64,23 +66,24 @@ export default function ReadMore({ route, navigation }) {
               <MaterialIcons name="add-circle-outline" size={36} color="#1d916ad3" />
             </Button>
             <Center>
-              <Text textAlign="center" fontSize={26} mx={4} w={8}>{count}</Text>
+              <Text textAlign="center" fontSize={26} mx={4} w={8}>
+                {count}
+              </Text>
             </Center>
-            <Button isDisabled={isLess}  variant="unstyled" _pressed={{ opacity: 0.3 }} p={1} onPress={decraseHandle}>
+            <Button isDisabled={isLess} variant="unstyled" _pressed={{ opacity: 0.3 }} p={1} onPress={decraseHandle}>
               <MaterialIcons name="remove-circle-outline" size={36} color="#1d916ad3" />
             </Button>
           </HStack>
-          <Text pt={4} fontWeight="bold" fontSize="lg">Price:
-            <Text fontSize="xl" color="teal.500"> ${price}</Text>
+          <Text pt={4} fontWeight="bold" fontSize="lg">
+            Price:
+            <Text fontSize="xl" color="teal.500">
+              {' '}
+              ${price}
+            </Text>
           </Text>
-          <Button 
-            borderRadius={50} 
-            mt={8} 
-            p={3} 
-            bg="teal.600" 
-            _pressed={{ opacity: 0.3 }}
-            onPress={handlePress}
-          >GET it NOW</Button>
+          <Button borderRadius={50} mt={8} p={3} bg="teal.600" _pressed={{ opacity: 0.3 }} onPress={handlePress}>
+            GET it NOW
+          </Button>
         </Box>
       </Center>
     </MainLayout>

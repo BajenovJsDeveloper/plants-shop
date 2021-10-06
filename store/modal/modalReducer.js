@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit'
 
 export const modalReducer = createSlice({
   name: 'modal',
@@ -8,13 +8,13 @@ export const modalReducer = createSlice({
     data: {
       title: 'Modal',
       about: ['Something about...'],
-      type: null
-    }  
+      type: null,
+    },
   },
   reducers: {
     showModal: (state, action) => {
       state.isShow = true
-      action.payload ? state.data = { ...state.data, ...action.payload } : null
+      action.payload ? (state.data = { ...state.data, ...action.payload }) : null
     },
     hideModal: (state, action) => {
       state.isShow = false
@@ -22,8 +22,8 @@ export const modalReducer = createSlice({
     },
     initModal: (state, action) => {
       state.data = action.payload
-    }
-  }
+    },
+  },
 })
 
 export const { showModal, hideModal, initModal } = modalReducer.actions

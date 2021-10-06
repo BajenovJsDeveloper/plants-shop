@@ -2,35 +2,36 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 const BaseUrl = 'http://192.168.100.50:3300'
-const HEADERS = { "Content-Type": "application/json" }
+const HEADERS = { 'Content-Type': 'application/json' }
 
 export const STATUS = {
-  loading: "loading",
-  ready: "ready",
+  loading: 'loading',
+  ready: 'ready',
 }
 
-const delayFetch = () => new Promise((resolve) => {
-  setTimeout(() => resolve(), 1000)
-})
+const delayFetch = () =>
+  new Promise((resolve) => {
+    setTimeout(() => resolve(), 1000)
+  })
 
-const createConfig = (method = 'GET', path = '', data ) => {
+const createConfig = (method = 'GET', path = '', data) => {
   return {
     url: BaseUrl + path,
     method,
     data,
-    headers: HEADERS
+    headers: HEADERS,
   }
 }
 
 export const fetchLogin = createAsyncThunk('user/login', async (data) => {
   const config = createConfig('POST', '/login', data)
-  
+
   await delayFetch()
   const response = await axios(config)
-  return  {
+  return {
     username: response.data.username,
-    token: response.data.token
-  }  
+    token: response.data.token,
+  }
 })
 
 export const fetchRegister = createAsyncThunk('user/register', async (data) => {
@@ -38,9 +39,9 @@ export const fetchRegister = createAsyncThunk('user/register', async (data) => {
 
   await delayFetch()
   const response = await axios(config)
-  return  {
+  return {
     username: response.data.username,
-    token: response.data.token
+    token: response.data.token,
   }
 })
 
@@ -52,7 +53,7 @@ export const userReducer = createSlice({
     status: STATUS.ready,
     username: '',
     errMessage: null,
-    myCart: []
+    myCart: [],
   },
   reducers: {
     login: (state, action) => {
@@ -65,7 +66,7 @@ export const userReducer = createSlice({
       state.errMessage = null
     },
     addToCart: (state, action) => {
-      const lastItem = state.myCart.find(item => item.item.id === action.payload.item.id)
+      const lastItem = state.myCart.find((item) => item.item.id === action.payload.item.id)
       if (lastItem) {
         lastItem.count += action.payload.count
         return
@@ -73,11 +74,11 @@ export const userReducer = createSlice({
       state.myCart.push(action.payload)
     },
     removeFromCart: (state, action) => {
-      state.myCart = state.myCart.filter(item => item.item.id !== action.payload.item.id)
-      console.log("Cart:", state.myCart)
-    }
+      state.myCart = state.myCart.filter((item) => item.item.id !== action.payload.item.id)
+      console.log('Cart:', state.myCart)
+    },
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchLogin.fulfilled, (state, action) => {
         state.token = action.payload.token
@@ -104,7 +105,7 @@ export const userReducer = createSlice({
       .addCase(fetchRegister.pending, (state, action) => {
         state.status = STATUS.loading
       })
-  }
+  },
 })
 
 export const { login, logout, resetToast, addToCart, removeFromCart } = userReducer.actions

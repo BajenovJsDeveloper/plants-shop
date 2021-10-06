@@ -1,9 +1,8 @@
-
 import React from 'react'
 import { Button, Icon } from 'native-base'
-import { MaterialIcons } from "@expo/vector-icons"
+import { MaterialIcons } from '@expo/vector-icons'
 
-export  const SubmitButton = ({ title, submit, iconName, ...props }) => {
+export const SubmitButton = ({ title, submit, iconName, ...props }) => {
   return (
     <Button
       {...props}
@@ -14,6 +13,8 @@ export  const SubmitButton = ({ title, submit, iconName, ...props }) => {
       _pressed={{ opacity: 0.5 }}
       p={3}
       leftIcon={<Icon as={<MaterialIcons name={iconName} />} size="sm" />}
-    >{title}</Button>
+    >
+      {title}
+    </Button>
   )
 }

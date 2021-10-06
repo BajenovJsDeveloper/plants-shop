@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { FormControl, Icon, Input, WarningOutlineIcon } from 'native-base'
-import { MaterialIcons } from "@expo/vector-icons"
+import { MaterialIcons } from '@expo/vector-icons'
 
-
-const IconInput = ({iconName, onShow, isPassShow}) => {
+const IconInput = ({ iconName, onShow, isPassShow }) => {
   return (
     <Icon
       as={<MaterialIcons name={iconName} />}
@@ -21,24 +20,24 @@ export const InputContainer = ({ data, input }) => {
   const isInvalid = errmsg ? true : false
 
   const handleShow = () => {
-    if (isPassword) setPasShow(prev => !prev)
+    if (isPassword) setPasShow((prev) => !prev)
   }
 
   return (
-    <FormControl w={{ base: "100%" }} isInvalid={isInvalid}>
+    <FormControl w={{ base: '100%' }} isInvalid={isInvalid}>
       <FormControl.Label>{title}</FormControl.Label>
-      <Input 
-        type={isPassword && !isPassShow ? "password" : "text"}
+      <Input
+        type={isPassword && !isPassShow ? 'password' : 'text'}
         onChangeText={(value) => input(name, value)}
-        variant="rounded" 
+        variant="rounded"
         value={value}
         placeholder={placeholder}
         borderColor="emerald.600"
-        InputRightElement={<IconInput iconName={isPassShow? activeIcon : icon} onShow={handleShow} isPassShow={isPassShow}/>}
+        InputRightElement={
+          <IconInput iconName={isPassShow ? activeIcon : icon} onShow={handleShow} isPassShow={isPassShow} />
+        }
       />
-      <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-        {errmsg}
-      </FormControl.ErrorMessage>
+      <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>{errmsg}</FormControl.ErrorMessage>
     </FormControl>
   )
 }
