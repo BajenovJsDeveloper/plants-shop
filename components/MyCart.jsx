@@ -2,6 +2,7 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { Box, Button, Center, Text } from 'native-base'
 import { useSelector } from 'react-redux'
+import { COLORS } from '../utils/colors'
 
 export const MyCart = ({ navigation }) => {
   const myCart = useSelector((state) => state.user.myCart.length)
@@ -21,7 +22,7 @@ export const MyCart = ({ navigation }) => {
             color="white"
             fontSize={12}
             bottom={-8}
-            bg="red.500"
+            bg={COLORS.danger}
             borderRadius={50}
             px={1.5}
             borderColor="white"

@@ -7,8 +7,7 @@ import { loginRules, validate } from '../../utils/validator'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchLogin, resetToast } from '../../store/user/userReducer'
 import { MainLayout } from '../../components/MainLayout'
-
-const PlantIMG = require('../../images/plant.jpg')
+import { COLORS } from '../../utils/colors'
 
 export function Login({ navigation }) {
   const [formData, setFormData] = useState(InitialLoginFormData())
@@ -60,8 +59,8 @@ export function Login({ navigation }) {
   }, [toastMessage])
 
   return (
-    <MainLayout bgImage={PlantIMG}>
-      <Box bg="trueGray.50" p={4} borderRadius={8}>
+    <MainLayout>
+      <Box bg={COLORS.light} p={4} borderRadius={8}>
         <VStack alignItems="center">
           <Heading textAlign="center" mb="10" color="teal.600">
             Login Form

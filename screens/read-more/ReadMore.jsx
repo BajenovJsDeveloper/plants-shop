@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../store/user/userReducer'
 import { showModal } from '../../store/modal/modalReducer'
 import { countTotalPrice } from '../../utils/api'
+import { COLORS } from '../../utils/colors'
 
 export default function ReadMore({ route, navigation }) {
   const item = route.params
@@ -45,10 +46,10 @@ export default function ReadMore({ route, navigation }) {
           <Center py={2}>
             <Image source={img} alt="Alternate Text" size="2xl" />
           </Center>
-          <Divider my={2} orientation="horizontal" bg="#c9c9c9c0" w="100%" />
+          <Divider my={2} orientation="horizontal" bg={COLORS.muted} w="100%" />
           <Heading textAlign="center">{title}</Heading>
           <Center my={2}>
-            <MaterialIcons name="info-outline" size={32} color="pink" />
+            <MaterialIcons name="info-outline" size={32} color={COLORS.warning} />
           </Center>
           {description.map((text, idx) => (
             <Text key={`plant-${idx}`} fontStyle="italic">
@@ -63,7 +64,7 @@ export default function ReadMore({ route, navigation }) {
               <Text fontWeight="bold">Total:</Text>
             </Center>
             <Button isDisabled={isMore} variant="unstyled" _pressed={{ opacity: 0.3 }} p={1} onPress={incraseHandle}>
-              <MaterialIcons name="add-circle-outline" size={36} color="#1d916ad3" />
+              <MaterialIcons name="add-circle-outline" size={36} color={COLORS.iconMain} />
             </Button>
             <Center>
               <Text textAlign="center" fontSize={26} mx={4} w={8}>
@@ -71,17 +72,17 @@ export default function ReadMore({ route, navigation }) {
               </Text>
             </Center>
             <Button isDisabled={isLess} variant="unstyled" _pressed={{ opacity: 0.3 }} p={1} onPress={decraseHandle}>
-              <MaterialIcons name="remove-circle-outline" size={36} color="#1d916ad3" />
+              <MaterialIcons name="remove-circle-outline" size={36} color={COLORS.iconMain} />
             </Button>
           </HStack>
           <Text pt={4} fontWeight="bold" fontSize="lg">
             Price:
-            <Text fontSize="xl" color="teal.500">
+            <Text fontSize="xl" color={COLORS.main}>
               {' '}
-              ${price}
+              $ {price}
             </Text>
           </Text>
-          <Button borderRadius={50} mt={8} p={3} bg="teal.600" _pressed={{ opacity: 0.3 }} onPress={handlePress}>
+          <Button borderRadius={50} mt={8} p={3} bg={COLORS.main} _pressed={{ opacity: 0.3 }} onPress={handlePress}>
             GET it NOW
           </Button>
         </Box>

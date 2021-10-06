@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FormControl, Icon, Input, WarningOutlineIcon } from 'native-base'
 import { MaterialIcons } from '@expo/vector-icons'
+import { COLORS } from '../utils/colors'
 
 const IconInput = ({ iconName, onShow, isPassShow }) => {
   return (
@@ -8,7 +9,7 @@ const IconInput = ({ iconName, onShow, isPassShow }) => {
       as={<MaterialIcons name={iconName} />}
       size={8}
       mr="2"
-      color={isPassShow ? 'muted.600' : 'muted.300'}
+      color={isPassShow ? COLORS.active : COLORS.muted}
       onPress={onShow}
     />
   )
@@ -32,7 +33,7 @@ export const InputContainer = ({ data, input }) => {
         variant="rounded"
         value={value}
         placeholder={placeholder}
-        borderColor="emerald.600"
+        borderColor={COLORS.main}
         InputRightElement={
           <IconInput iconName={isPassShow ? activeIcon : icon} onShow={handleShow} isPassShow={isPassShow} />
         }

@@ -7,8 +7,7 @@ import { SubmitButton } from '../../components/SubmitButton'
 import { MainLayout } from '../../components/MainLayout'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRegister } from '../../store/user/userReducer'
-
-const PlantIMG = require('../../images/plant.jpg')
+import { COLORS } from '../../utils/colors'
 
 export const Register = ({ navigation }) => {
   const token = useSelector((state) => state.user.token)
@@ -39,10 +38,10 @@ export const Register = ({ navigation }) => {
   }, [token])
 
   return (
-    <MainLayout bgImage={PlantIMG}>
-      <Box bg="trueGray.50" p={4} borderRadius={8}>
+    <MainLayout>
+      <Box bg={COLORS.light} p={4} borderRadius={8}>
         <VStack alignItems="center">
-          <Heading textAlign="center" mb="10" color="teal.600">
+          <Heading textAlign="center" mb="10" color={COLORS.main}>
             Registartion Form
           </Heading>
           <Stack space={2} w={{ base: '100%' }}>

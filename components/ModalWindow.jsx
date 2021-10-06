@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideModal } from '../store/modal/modalReducer'
 import { MaterialIcons } from '@expo/vector-icons'
+import { COLORS } from '../utils/colors'
 
 export const ModalWindow = ({ submit, cancel }) => {
   const { title, about, type } = useSelector((state) => state.modal.data)
@@ -18,12 +19,12 @@ export const ModalWindow = ({ submit, cancel }) => {
     <Modal isOpen={isOpen} onClose={closeHandle} closeOnOverlayClick={false}>
       <Modal.Content>
         <Modal.Header>
-          <Heading>{title}</Heading>
+          <Heading color={COLORS.header}>{title}</Heading>
         </Modal.Header>
         <Modal.Body>
           <Center mb={4}>
-            <Box bg="teal.100" p={2} borderRadius={50}>
-              <MaterialIcons name="done" size={40} color="green" />
+            <Box bg={COLORS.muted} p={2} borderRadius={50}>
+              <MaterialIcons name="done" size={40} color={COLORS.iconMain} />
             </Box>
           </Center>
           {about.map((text) => (
@@ -37,7 +38,7 @@ export const ModalWindow = ({ submit, cancel }) => {
               onPress={() => closeHandle(false)}
               colorScheme="secondary"
               _pressed={{ opacity: 0.3 }}
-              bg="teal.50"
+              bg={COLORS.secondary}
               px={6}
             >
               Cancel
@@ -45,7 +46,7 @@ export const ModalWindow = ({ submit, cancel }) => {
             <Button
               borderRadius={50}
               onPress={() => closeHandle(true)}
-              bg="teal.500"
+              bg={COLORS.main}
               _pressed={{ opacity: 0.3 }}
               px={6}
             >

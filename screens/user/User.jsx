@@ -6,6 +6,7 @@ import { SubmitButton } from '../../components/SubmitButton'
 import { logout } from '../../store/user/userReducer'
 import { Card } from '../../components/Card'
 import { mocData } from '../../store/mocData'
+import { COLORS } from '../../utils/colors'
 
 const PlantIMG = require('../../images/plant.jpg')
 
@@ -23,7 +24,7 @@ export function User({ navigation }) {
 
   return (
     <MainLayout bgImage={PlantIMG}>
-      <Heading fontSize="2xl" color="info.500" textAlign="center" pb={2}>
+      <Heading fontSize="2xl" color={COLORS.info} textAlign="center" pb={2}>
         Hi, {userName}
       </Heading>
       <VStack p={4}>

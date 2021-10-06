@@ -1,6 +1,6 @@
-const EMAIL_REGX = /^[0-9a-z A-Z]+@[0-9a-z A-Z]+\.[0-9a-z A-Z]+$/gi
+const EMAIL_REGX = /^[0-9a-zA-Z]+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+$/gi
 const NAME_REGX = /^[a-z A-Z]+$/gi
-const PASS_REGX = /^[0-9a-z A-Z]+$/gi
+const PASS_REGX = /^[0-9a-zA-Z]+$/gi
 
 export const validate = (form, rules) => {
   const result = { ...form }
